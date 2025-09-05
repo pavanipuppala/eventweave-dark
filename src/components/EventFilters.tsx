@@ -8,7 +8,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export const EventFilters = () => {
+interface EventFiltersProps {
+  filters?: {
+    date: string;
+    category: string;
+    location: string;
+  };
+  onFiltersChange?: (filters: { date: string; category: string; location: string; }) => void;
+}
+
+export const EventFilters = ({ filters, onFiltersChange }: EventFiltersProps = {}) => {
   return (
     <div className="bg-card border border-border rounded-lg p-6 space-y-4">
       <h3 className="font-semibold text-lg text-card-foreground">Filter Events</h3>
@@ -20,7 +29,7 @@ export const EventFilters = () => {
             <Calendar className="h-4 w-4" />
             Date
           </label>
-          <Select>
+          <Select value={filters?.date || ""} onValueChange={(value) => onFiltersChange?.({ ...filters, date: value } as any)}>
             <SelectTrigger>
               <SelectValue placeholder="Select date" />
             </SelectTrigger>
@@ -40,7 +49,7 @@ export const EventFilters = () => {
             <Tag className="h-4 w-4" />
             Category
           </label>
-          <Select>
+          <Select value={filters?.category || ""} onValueChange={(value) => onFiltersChange?.({ ...filters, category: value } as any)}>
             <SelectTrigger>
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
@@ -61,7 +70,7 @@ export const EventFilters = () => {
             <MapPin className="h-4 w-4" />
             Location
           </label>
-          <Select>
+          <Select value={filters?.location || ""} onValueChange={(value) => onFiltersChange?.({ ...filters, location: value } as any)}>
             <SelectTrigger>
               <SelectValue placeholder="Select location" />
             </SelectTrigger>
@@ -77,7 +86,11 @@ export const EventFilters = () => {
       </div>
       
       <div className="flex gap-2">
-        <Button variant="outline" className="flex-1">
+        <Button 
+          variant="outline" 
+          className="flex-1"
+          onClick={() => onFiltersChange?.({ date: "", category: "", location: "" })}
+        >
           Clear Filters
         </Button>
         <Button className="flex-1 bg-primary hover:bg-hover-accent">

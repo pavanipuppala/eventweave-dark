@@ -3,16 +3,18 @@ import { EventCard } from "@/components/EventCard";
 import { EventFilters } from "@/components/EventFilters";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Calendar, Users, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import techConferenceImg from "@/assets/tech-conference.jpg";
 import creativeWorkshopImg from "@/assets/creative-workshop.jpg";
 import businessNetworkingImg from "@/assets/business-networking.jpg";
+import defaultEventImg from "@/assets/default-event.jpg";
 
 const mockEvents = [
   {
     id: "1",
-    title: "Tech Innovation Summit 2024",
-    description: "Join industry leaders for the latest in AI, blockchain, and emerging technologies. Network with innovators and discover the future of tech.",
-    date: "March 15, 2024",
+    title: "AI & Machine Learning Summit 2025",
+    description: "Explore the latest in AI, machine learning, and neural networks. Connect with leading researchers and industry pioneers.",
+    date: "January 15, 2025",
     time: "9:00 AM",
     venue: "San Francisco Convention Center",
     category: "Technology",
@@ -22,11 +24,11 @@ const mockEvents = [
   },
   {
     id: "2",
-    title: "Creative Design Workshop",
-    description: "Hands-on workshop for designers and creatives. Learn new techniques, tools, and get inspired by fellow artists.",
-    date: "March 18, 2024",
+    title: "Digital Art & Design Workshop",
+    description: "Master modern design tools and techniques. Learn from award-winning designers and create stunning visual content.",
+    date: "January 20, 2025",
     time: "2:00 PM",
-    venue: "Design Studio Downtown",
+    venue: "Creative Hub Downtown",
     category: "Creative",
     attendees: 32,
     maxAttendees: 50,
@@ -34,9 +36,9 @@ const mockEvents = [
   },
   {
     id: "3",
-    title: "Business Networking Mixer",
-    description: "Connect with entrepreneurs, investors, and business professionals in a relaxed social setting.",
-    date: "March 20, 2024",
+    title: "Startup Networking Night",
+    description: "Connect with entrepreneurs, investors, and innovators. Build relationships that drive business growth.",
+    date: "January 22, 2025",
     time: "6:00 PM",
     venue: "The Rooftop Lounge",
     category: "Business",
@@ -46,36 +48,39 @@ const mockEvents = [
   },
   {
     id: "4",
-    title: "Digital Marketing Masterclass",
-    description: "Learn advanced digital marketing strategies from industry experts. Covers SEO, social media, and content marketing.",
-    date: "March 22, 2024",
+    title: "Web3 Development Bootcamp",
+    description: "Learn blockchain development, smart contracts, and decentralized applications from industry experts.",
+    date: "January 25, 2025",
     time: "10:00 AM",
     venue: "Online Event",
-    category: "Education",
+    category: "Technology",
     attendees: 156,
-    maxAttendees: 200
+    maxAttendees: 200,
+    imageUrl: defaultEventImg
   },
   {
     id: "5",
-    title: "Wellness & Mindfulness Retreat",
-    description: "A day of yoga, meditation, and wellness activities. Rejuvenate your mind and body with expert guidance.",
-    date: "March 25, 2024",
+    title: "Mindfulness & Productivity Workshop",
+    description: "Enhance your well-being and productivity through mindfulness practices and work-life balance techniques.",
+    date: "January 28, 2025",
     time: "8:00 AM",
-    venue: "Zen Garden Center",
+    venue: "Wellness Center",
     category: "Health",
     attendees: 43,
-    maxAttendees: 75
+    maxAttendees: 75,
+    imageUrl: defaultEventImg
   },
   {
     id: "6",
-    title: "Startup Pitch Competition",
-    description: "Watch innovative startups pitch their ideas to a panel of investors. See the next big thing before it happens.",
-    date: "March 28, 2024",
-    time: "7:00 PM",
-    venue: "Innovation Hub",
+    title: "Investment & Finance Conference",
+    description: "Discover investment strategies, market trends, and financial planning insights from top analysts.",
+    date: "February 2, 2025",
+    time: "9:00 AM",
+    venue: "Financial District Center",
     category: "Business",
     attendees: 198,
-    maxAttendees: 300
+    maxAttendees: 300,
+    imageUrl: defaultEventImg
   }
 ];
 
@@ -103,12 +108,16 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-hover-accent text-primary-foreground px-8">
-              Explore Events
-            </Button>
-            <Button size="lg" variant="outline" className="px-8">
-              Create Event
-            </Button>
+            <Link to="/browse-events">
+              <Button size="lg" className="bg-primary hover:bg-hover-accent text-primary-foreground px-8">
+                Explore Events
+              </Button>
+            </Link>
+            <Link to="/create-event">
+              <Button size="lg" variant="outline" className="px-8">
+                Create Event
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

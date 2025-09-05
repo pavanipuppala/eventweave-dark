@@ -2,6 +2,7 @@ import { Calendar, MapPin, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import defaultEventImg from "@/assets/default-event.jpg";
 
 interface EventCardProps {
   id: string;
@@ -32,17 +33,14 @@ export const EventCard = ({
   return (
     <Card className="group overflow-hidden border-border bg-card hover:shadow-event-glow transition-all duration-300 hover:scale-[1.02]">
       <div className="relative h-48 overflow-hidden">
-        {imageUrl ? (
-          <img 
-            src={imageUrl} 
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-        ) : (
-          <div className="w-full h-full bg-event-gradient flex items-center justify-center">
-            <Calendar className="h-12 w-12 text-primary-foreground opacity-50" />
-          </div>
-        )}
+        <img 
+          src={imageUrl || defaultEventImg} 
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          onError={(e) => {
+            e.currentTarget.src = defaultEventImg;
+          }}
+        />
         <div className="absolute top-3 left-3">
           <Badge variant="secondary" className="bg-secondary/90 backdrop-blur-sm">
             {category}

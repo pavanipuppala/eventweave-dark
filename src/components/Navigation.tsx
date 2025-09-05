@@ -1,18 +1,19 @@
 import { Calendar, Search, User, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-event-gradient flex items-center justify-center">
             <Calendar className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="font-bold text-xl text-foreground">EventHub</span>
-        </div>
+        </Link>
         
         {/* Search Bar */}
         <div className="hidden md:flex items-center gap-2 flex-1 max-w-md mx-8">
@@ -27,19 +28,25 @@ export const Navigation = () => {
         
         {/* Navigation Actions */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="hidden sm:flex">
-            Browse Events
-          </Button>
+          <Link to="/browse-events">
+            <Button variant="ghost" size="sm" className="hidden sm:flex">
+              Browse Events
+            </Button>
+          </Link>
           
-          <Button variant="outline" size="sm" className="gap-2">
-            <Plus className="h-4 w-4" />
-            Create Event
-          </Button>
+          <Link to="/create-event">
+            <Button variant="outline" size="sm" className="gap-2">
+              <Plus className="h-4 w-4" />
+              Create Event
+            </Button>
+          </Link>
           
-          <Button variant="ghost" size="sm" className="gap-2">
-            <User className="h-4 w-4" />
-            <span className="hidden sm:inline">Sign In</span>
-          </Button>
+          <Link to="/sign-in">
+            <Button variant="ghost" size="sm" className="gap-2">
+              <User className="h-4 w-4" />
+              <span className="hidden sm:inline">Sign In</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
